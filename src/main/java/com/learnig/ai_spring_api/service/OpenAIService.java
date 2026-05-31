@@ -1,18 +1,22 @@
 package com.learnig.ai_spring_api.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
-public class
-OpenAIService {
+public class OpenAIService {
 
     private final WebClient webClient;
 
-    public OpenAIService(WebClient.Builder builder) {
+    public OpenAIService(
+            WebClient.Builder builder,
+            @Value("${openai.api-key}") String apiKey
+    ) {
+
         this.webClient = builder
                 .baseUrl("https://api.openai.com/v1")
-                .defaultHeader("Authorization", "Bearer " + System.getenv("OPENAI_API_KEY"))
+                .defaultHeader("Authorization", "Bearer " + apiKey)
                 .build();
     }
 
