@@ -1,3 +1,12 @@
 spring:
   application:
     name: AI-Spring-API
+
+
+openai:
+  api-key:
+
+
+ai:
+  agent:
+    base-url: http://localhost:8000
